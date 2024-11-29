@@ -9,7 +9,7 @@ const port = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cors());
 
-app.get("/", (req, res) => {
+app.get("/test", (req, res) => {
   res.send("Hello from server side");
 });
 
@@ -30,7 +30,7 @@ async function run() {
     await client.connect();
     const coffeeCollection = client.db("coffeeDB").collection("coffees");
 
-    app.get("/coffees", async (req, res) => {
+    app.get("/", async (req, res) => {
       const cursor = coffeeCollection.find();
       const coffees = await cursor.toArray();
       res.send(coffees);
