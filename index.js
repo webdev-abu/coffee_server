@@ -30,7 +30,7 @@ async function run() {
     await client.connect();
     const coffeeCollection = client.db("coffeeDB").collection("coffees");
 
-    app.get("/", async (req, res) => {
+    app.get("/coffees", async (req, res) => {
       const cursor = coffeeCollection.find();
       const coffees = await cursor.toArray();
       res.send(coffees);
